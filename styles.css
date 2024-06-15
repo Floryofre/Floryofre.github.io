@@ -156,24 +156,21 @@ body.dark-mode footer {
 }
 
 /* Estilos específicos para proyectos */
-/* Estilos específicos para proyectos */
 .project-images {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 10px; /* Espacio entre las imágenes */
 }
 
 .project-images img {
-    flex: 1 1 calc(50% - 10px); /* Dos columnas con un espacio entre imágenes */
-    max-width: 45%;
+    width: 100%;
+    max-width: 600px; /* Tamaño máximo de la imagen */
     height: auto; /* Mantener la altura automática para mantener la proporción */
 }
 
 @media (max-width: 768px) {
     .project-images img {
-        flex: 1 1 100%; /* Una columna por línea en pantallas más pequeñas */
-        max-width: 100%;
+        width: 100%; /* Asegurarse de que la imagen ocupe el 100% del contenedor en pantallas pequeñas */
     }
 }
 
