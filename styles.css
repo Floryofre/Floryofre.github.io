@@ -166,7 +166,7 @@ body.dark-mode footer {
 
 .project-images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); /* Ajusta el tamaño de las columnas automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); /* Dos columnas por línea en pantallas anchas */
     gap: 10px; /* Espacio entre las imágenes */
 }
 
@@ -178,7 +178,7 @@ body.dark-mode footer {
 
 @media (max-width: 768px) {
     .project-images {
-        grid-template-columns: 100%; /* Una columna en pantallas más pequeñas */
+        grid-template-columns: 1fr; /* Una columna por línea en pantallas más pequeñas */
     }
 }
 
