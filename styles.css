@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -97,7 +98,7 @@ footer {
     bottom: 0;
 }
 
-/* Light mode styles */
+/* Modos de color */
 body.light-mode {
     background-color: white;
     color: black;
@@ -126,7 +127,6 @@ body.light-mode footer {
     color: black;
 }
 
-/* Dark mode styles */
 body.dark-mode {
     background-color: #121212;
     color: white;
@@ -155,7 +155,23 @@ body.dark-mode footer {
     color: white;
 }
 
+/* Estilos específicos para proyectos */
+.project {
+    margin-bottom: 30px; /* Espacio entre proyectos */
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-  width: 100%;
+.project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el tamaño de las columnas automáticamente */
+    gap: 10px; /* Espacio entre las imágenes */
+}
+
+.project-images img {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin-bottom: 5px; /* Espacio debajo de las imágenes */
 }
