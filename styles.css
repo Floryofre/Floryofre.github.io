@@ -165,14 +165,14 @@ body.dark-mode footer {
 }
 
 .project-images img {
-    flex: 0 0 calc(50% - 10px); /* Dos columnas con un espacio entre imágenes */
+    flex: 1 1 calc(50% - 10px); /* Dos columnas con un espacio entre imágenes */
     max-width: 45%;
     height: auto; /* Mantener la altura automática para mantener la proporción */
 }
 
 @media (max-width: 768px) {
     .project-images img {
-        flex: 0 0 100%; /* Una columna por línea en pantallas más pequeñas */
+        flex: 1 1 100%; /* Una columna por línea en pantallas más pequeñas */
         max-width: 100%;
     }
 }
