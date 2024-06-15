@@ -163,14 +163,15 @@ body.dark-mode footer {
 }
 
 .project-images img {
-    width: 100%;
-    max-width: 600px; /* Tamaño máximo de la imagen */
+    width: 20%; /* Reducir el tamaño de la imagen al 20% */
+    max-width: 120px; /* 20% de 600px, el tamaño máximo anterior */
     height: auto; /* Mantener la altura automática para mantener la proporción */
 }
 
 @media (max-width: 768px) {
     .project-images img {
-        width: 70%; /* Asegurarse de que la imagen ocupe el 100% del contenedor en pantallas pequeñas */
+        width: 20%; /* Asegurarse de que la imagen ocupe el 20% del contenedor en pantallas pequeñas */
+        max-width: 120px; /* Mantener el mismo tamaño máximo en pantallas pequeñas */
     }
 }
 
