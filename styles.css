@@ -26,6 +26,19 @@ nav ul li a {
     text-decoration: none;
 }
 
+button#mode-toggle {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+}
+
+button#mode-toggle:hover {
+    background-color: #555;
+}
+
 section {
     padding: 2rem;
     text-align: center;
@@ -38,7 +51,11 @@ section {
 }
 
 .project {
-    margin: 1rem 0;
+    margin: 2rem 0;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 form {
@@ -78,6 +95,66 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Light mode styles */
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.light-mode header {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+body.light-mode nav ul li a {
+    color: black;
+}
+
+body.light-mode button#mode-toggle {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+body.light-mode button#mode-toggle:hover {
+    background-color: #ddd;
+}
+
+body.light-mode footer {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode header {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode nav ul li a {
+    color: white;
+}
+
+body.dark-mode button#mode-toggle {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode button#mode-toggle:hover {
+    background-color: #555;
+}
+
+body.dark-mode footer {
+    background-color: #333;
+    color: white;
+}
+
 }
 
   width: 100%;
