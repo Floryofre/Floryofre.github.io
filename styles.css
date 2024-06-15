@@ -163,10 +163,10 @@ body.dark-mode footer {
     justify-items: center; /* Centrar las imágenes dentro de sus celdas */
 }
 
-.project-images img {
+.imgp  {
     width: 100%; /* Hacer que las imágenes ocupen el 100% de la celda */
     height: auto; /* Mantener la altura automática para mantener la proporción */
-    max-width: 200px; /* Limitar el ancho máximo a 200px */
+    max-width: 720px; /* Limitar el ancho máximo a 720 */
 }
 
 @media (max-width: 768px) {
