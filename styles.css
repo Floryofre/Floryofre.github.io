@@ -170,7 +170,7 @@ body.dark-mode footer {
 
 @media (max-width: 768px) {
     .project-images img {
-        width: 100%; /* Asegurarse de que la imagen ocupe el 100% del contenedor en pantallas pequeñas */
+        width: 70%; /* Asegurarse de que la imagen ocupe el 100% del contenedor en pantallas pequeñas */
     }
 }
 
