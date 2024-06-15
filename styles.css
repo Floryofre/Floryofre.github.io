@@ -157,19 +157,22 @@ body.dark-mode footer {
 
 /* Estilos específicos para proyectos */
 .project-images {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas por línea en pantallas anchas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px; /* Espacio entre las imágenes */
 }
 
 .project-images img {
-    width: 100%; /* Ajustar el tamaño de las imágenes al 100% del contenedor */
+    flex: 1 1 calc(50% - 10px); /* Dos columnas con un espacio entre imágenes */
+    max-width: 45%;
     height: auto; /* Mantener la altura automática para mantener la proporción */
 }
 
 @media (max-width: 768px) {
-    .project-images {
-        grid-template-columns: 1fr; /* Una columna por línea en pantallas más pequeñas */
+    .project-images img {
+        flex: 1 1 100%; /* Una columna por línea en pantallas más pequeñas */
+        max-width: 100%;
     }
 }
 
