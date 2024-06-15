@@ -158,14 +158,13 @@ body.dark-mode footer {
 /* Estilos específicos para proyectos */
 .project-images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); /* Dos columnas por línea en pantallas anchas */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas por línea en pantallas anchas */
     gap: 10px; /* Espacio entre las imágenes */
 }
 
 .project-images img {
-    width: 50%; /* Reducir el tamaño de las imágenes al 50% */
+    width: 100%; /* Ajustar el tamaño de las imágenes al 100% del contenedor */
     height: auto; /* Mantener la altura automática para mantener la proporción */
-    margin-bottom: 5px; /* Espacio debajo de las imágenes */
 }
 
 @media (max-width: 768px) {
