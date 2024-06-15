@@ -1,33 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Floryofre</title>
+    <title>Floryofre Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header>
-        <h1>Mi Portafolio de Análisis de Datos - Ma. Florencia Yofre </h1>
-    </header>
-    <main>
-        <section>
-            <h2>Proyectos</h2>
+        <nav>
             <ul>
-                <li><a href="https://github.com/Floryofre/PrimerProyectoExcel">Proyecto 1: Primer Proyecto con Excel</a>
-                </li>
-                <li><a href="https://github.com/Floryofre/Analisis_con_SQL">Proyecto 2: Análisis con SQL</a></li>
-                <li><a href="https://github.com/Floryofre/Power_BI_Henry">Proyecto 3: Power BI Henry</a></li>
-                <li><a href="https://github.com/Floryofre/Trabajando_con-_Python">Proyecto 4: Analizando con Python</a>
-                </li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </section>
-    </main>
+        </nav>
+    </header>
+    <section id="about">
+        <h1>Floryofre</h1>
+        <p>Hello! I am Floryofre, a passionate developer...</p>
+        <img src="your-photo.jpg" alt="Your Photo">
+    </section>
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project">
+            <h3>Project 1</h3>
+            <p>Description of project 1...</p>
+            <a href="https://github.com/yourproject1" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+            <h3>Project 2</h3>
+            <p>Description of project 2...</p>
+            <a href="https://github.com/yourproject2" target="_blank">View on GitHub</a>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="your-form-handler-url" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
     <footer>
-        <p>© 2024 Floryofre</p>
+        <p>&copy; 2024 Floryofre. All rights reserved.</p>
     </footer>
 </body>
-
 </html>
