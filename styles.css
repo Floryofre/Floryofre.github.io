@@ -157,22 +157,26 @@ body.dark-mode footer {
 
 /* Estilos específicos para proyectos */
 .project-images {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Crear una cuadrícula con columnas ajustables */
     gap: 10px; /* Espacio entre las imágenes */
+    justify-items: center; /* Centrar las imágenes dentro de sus celdas */
 }
 
 .project-images img {
-    width: 20%; /* Reducir el tamaño de la imagen al 20% */
-    max-width: 200px; /* Establecer un límite máximo más pequeño */
+    width: 100%; /* Hacer que las imágenes ocupen el 100% de la celda */
     height: auto; /* Mantener la altura automática para mantener la proporción */
+    max-width: 200px; /* Limitar el ancho máximo a 200px */
 }
 
 @media (max-width: 768px) {
+    .project-images {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajustar el tamaño de las celdas en pantallas más pequeñas */
+    }
     .project-images img {
-        width: 50%; /* Reducir el tamaño de la imagen al 50% en pantallas pequeñas */
-        max-width: 150px; /* Mantener un tamaño máximo adecuado en pantallas pequeñas */
+        max-width: 150px; /* Limitar el ancho máximo a 150px en pantallas más pequeñas */
     }
 }
+
 
 
