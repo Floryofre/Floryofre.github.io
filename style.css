@@ -96,7 +96,7 @@ section:last-of-type{ border-bottom:none; }
 .hero-name{
   font-family:'Space Grotesk', sans-serif;
   font-weight:700;
-  font-size:54px;
+  font-size:40px;
   line-height:1.05;
   letter-spacing:-0.01em;
   color:var(--paper);
@@ -114,7 +114,7 @@ section:last-of-type{ border-bottom:none; }
 .hero-subtitle .accent{ color:var(--teal); }
 .hero-focus{
   font-family:'IBM Plex Sans', sans-serif;
-  font-weight:400;
+  font-weight:500;
   font-size:22px;
   color:var(--muted);
   display:inline-block;
