@@ -1,111 +1,157 @@
-// =============================================
-// Menú móvil
-// =============================================
-const navToggle = document.getElementById('nav-toggle');
-const nav = document.getElementById('nav');
+// ================= CONFIGURACION FACIL =================
+const GITHUB_USER = "Floryofre"; // <--- cambia por tu usuario exacto
+const EXCLUDED_REPOS = [
+  // "nombre-del-repo-a-ocultar",
+  // "otro-repo",
+  // Ejemplo: "mi-proyecto-viejo"
+];
+const SHOW_FORKS = false; // true si querés mostrar forks
+const SHOW_ARCHIVED = false;
+const SHOW_PRIVATE_NOTE = false; // los privados no aparecen sin token, pero si usas token podrian
+// ============================================================
 
-if (navToggle && nav) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
+const LANG_COLORS = {
+  JavaScript:"#F7DF1E", TypeScript:"#3178C6", Python:"#3776AB", Jupyter:"#DA5B0B",
+  HTML:"#E34F26", CSS:"#1572B6", "C++":"#00599C", Java:"#B07219", Shell:"#89E051",
+  Dockerfile:"#384D54", "C#":"#178600", Go:"#00ADD8", Rust:"#DEA584"
+};
 
-  // Cierra el menú al elegir una sección (útil en mobile)
-  nav.querySelectorAll('.nav-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+const $grid = document.getElementById('grid');
+const $profile = document.getElementById('profile');
+const $search = document.getElementById('search');
+const $langFilter = document.getElementById('langFilter');
+const $sortBy = document.getElementById('sortBy');
+const $hideForks = document.getElementById('hideForks');
+const $hideArchived = document.getElementById('hideArchived');
+const $counter = document.getElementById('counter');
+const $empty = document.getElementById('empty');
+
+let allRepos = [];
+
+async function fetchJSON(url){
+  const res = await fetch(url);
+  if(!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+async function load(){
+  try{
+    $hideForks.checked = !SHOW_FORKS;
+    $hideArchived.checked = !SHOW_ARCHIVED;
+
+    // Perfil
+    const user = await fetchJSON(`https://api.github.com/users/${GITHUB_USER}`);
+    renderProfile(user);
+
+    // Repos - traemos hasta 100
+    const repos = await fetchJSON(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=100&type=all`);
+    allRepos = repos;
+
+    // Llenar filtro de lenguajes
+    const langs = [...new Set(repos.map(r=>r.language).filter(Boolean))].sort();
+    langs.forEach(l=>{
+      const o=document.createElement('option'); o.value=l; o.textContent=l; $langFilter.appendChild(o);
     });
+
+    applyFilters();
+  }catch(e){
+    console.error(e);
+    $profile.innerHTML = `<p style="color:#F2A65A;font-family:monospace">Error cargando ${GITHUB_USER}: ${e.message}. Verificá que el usuario exista y que no excediste el límite de la API (60 req/h sin login).</p>`;
+  }
+}
+
+function renderProfile(u){
+  $profile.innerHTML = `
+    <img src="${u.avatar_url}" alt="${u.login}">
+    <div>
+      <h1>${u.name || u.login} <span style="color:var(--muted-2);font-weight:400;font-size:18px">@${u.login}</span></h1>
+      <p>${u.bio ? u.bio : 'Colección de repositorios públicos.'}</p>
+      <div style="margin-top:8px">
+        <span class="badge"><b>${u.public_repos}</b> repos</span>
+        <span class="badge"><b>${u.followers}</b> followers</span>
+        <span class="badge"><b>${u.following}</b> following</span>
+        ${u.location ? `<span class="badge">📍 ${u.location}</span>` : ''}
+        ${u.blog ? `<a class="badge" href="${u.blog}" target="_blank" rel="noopener">🔗 Website</a>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function applyFilters(){
+  const q = $search.value.toLowerCase().trim();
+  const lang = $langFilter.value;
+  const sort = $sortBy.value;
+  const hideForks = $hideForks.checked;
+  const hideArchived = $hideArchived.checked;
+
+  let filtered = allRepos.filter(r=>{
+    if(EXCLUDED_REPOS.includes(r.name)) return false;
+    if(hideForks && r.fork) return false;
+    if(hideArchived && r.archived) return false;
+    if(lang && r.language !== lang) return false;
+    if(q && !(r.name.toLowerCase().includes(q) || (r.description||'').toLowerCase().includes(q) || (r.topics||[]).join(' ').toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  filtered.sort((a,b)=>{
+    if(sort==='stars') return b.stargazers_count - a.stargazers_count;
+    if(sort==='name') return a.name.localeCompare(b.name);
+    return new Date(b.updated_at) - new Date(a.updated_at);
+  });
+
+  renderGrid(filtered);
+}
+
+function renderGrid(repos){
+  $grid.innerHTML = '';
+  $counter.textContent = `${repos.length} repos visibles`;
+
+  if(repos.length===0){ $empty.classList.remove('hidden'); return; }
+  $empty.classList.add('hidden');
+
+  repos.forEach(r=>{
+    const isPages = r.name.toLowerCase() === `${GITHUB_USER.toLowerCase()}.github.io`;
+    const color = LANG_COLORS[r.language] || '#A78BFA';
+    const card = document.createElement('div');
+    card.className='card';
+    card.innerHTML = `
+      <div class="card-top">
+        <h3><a href="${r.html_url}" target="_blank" rel="noopener">${r.name}</a> ${isPages ? '<span class="tag">WEB PRINCIPAL</span>' : ''} ${r.fork ? '<span class="tag" style="background:rgba(100,100,100,0.2)">FORK</span>' : ''} ${r.archived ? '<span class="tag" style="background:rgba(242,166,90,0.15);color:var(--amber)">ARCHIVADO</span>' : ''}</h3>
+      </div>
+      <p>${r.description ? r.description : '<span style="color:var(--muted-2)">Sin descripción — agregala en GitHub para que se vea más lindo.</span>'}</p>
+      <div class="meta">
+        ${r.language ? `<span class="lang"><span class="dot" style="background:${color}"></span>${r.language}</span>` : ''}
+        <span class="stat">★ ${r.stargazers_count}</span>
+        <span class="stat">⑂ ${r.forks_count}</span>
+        <span class="stat" title="${new Date(r.updated_at).toLocaleString()}">↻ ${timeAgo(r.updated_at)}</span>
+        ${(r.topics||[]).slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('')}
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="${r.html_url}" target="_blank">Código</a>
+        ${r.homepage ? `<a class="btn" href="${r.homepage}" target="_blank">Demo</a>` : ''}
+      </div>
+    `;
+    $grid.appendChild(card);
   });
 }
 
-// =============================================
-// Resaltar el link activo según la sección visible
-// =============================================
-const sections = document.querySelectorAll('main section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-if (sections.length && navLinks.length) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach((link) => {
-            link.style.color = link.getAttribute('href') === `#${id}`
-              ? 'var(--paper)'
-              : 'var(--muted)';
-          });
-        }
-      });
-    },
-    { rootMargin: '-40% 0px -50% 0px' }
-  );
-
-  sections.forEach((section) => observer.observe(section));
+function timeAgo(dateStr){
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const d = Math.floor(diff/86400000);
+  if(d===0) return 'hoy';
+  if(d===1) return 'ayer';
+  if(d<30) return `hace ${d}d`;
+  const m = Math.floor(d/30);
+  if(m<12) return `hace ${m}m`;
+  return `hace ${Math.floor(m/12)}a`;
 }
 
-// =============================================
-// Año dinámico en el footer
-// =============================================
-const yearEl = document.getElementById('year');
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
+$search.addEventListener('input', applyFilters);
+$langFilter.addEventListener('change', applyFilters);
+$sortBy.addEventListener('change', applyFilters);
+$hideForks.addEventListener('change', applyFilters);
+$hideArchived.addEventListener('change', applyFilters);
 
-// =============================================
-// Formulario de contacto
-// =============================================
-const contactForm = document.getElementById('contact-form');
+document.getElementById('year').textContent = new Date().getFullYear();
 
-if (contactForm) {
-  const statusEl = document.getElementById('cf-status');
-  const submitBtn = document.getElementById('cf-submit');
-
-  contactForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    // Guarda de seguridad: si en algún momento se borra o rompe el endpoint
-    // de Formspree en index.html, avisamos en vez de intentar un envío que va a fallar.
-    const endpoint = contactForm.getAttribute('action') || '';
-    const isConfigured = endpoint.startsWith('https://formspree.io/f/');
-
-    if (!isConfigured) {
-      statusEl.textContent = 'Este formulario todavía no está conectado a un servicio de envío (falta configurar el endpoint de Formspree en index.html).';
-      statusEl.className = 'form-status form-status-info';
-      return;
-    }
-
-    // Deshabilita el botón e indica que el envío está en curso
-    submitBtn.disabled = true;
-    submitBtn.classList.add('is-loading');
-    statusEl.textContent = 'Enviando…';
-    statusEl.className = 'form-status form-status-info';
-
-    try {
-      const formData = new FormData(contactForm);
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
-      });
-
-      if (response.ok) {
-        // Éxito: mensaje de confirmación + limpieza de los campos
-        statusEl.textContent = 'Mensaje enviado. ¡Gracias por escribir! Te voy a responder a la brevedad.';
-        statusEl.className = 'form-status form-status-success';
-        contactForm.reset();
-      } else {
-        throw new Error('Respuesta no exitosa del servidor');
-      }
-    } catch (error) {
-      // Error de red o de Formspree: mensaje de error + alternativa de contacto
-      statusEl.textContent = 'Hubo un error al enviar el mensaje. Mientras tanto, podés escribirme directamente por email.';
-      statusEl.className = 'form-status form-status-error';
-    } finally {
-      // Vuelve a habilitar el botón siempre, haya éxito o error
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('is-loading');
-    }
-  });
-}
+load();

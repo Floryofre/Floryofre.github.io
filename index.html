@@ -3,468 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>María Florencia Yofre — Data & Operations Analyst</title>
-<meta name="description" content="Portfolio profesional de María Florencia Yofre: Data & Operations Analyst especializada en Business Intelligence, automatización y soluciones empresariales.">
+<title>Florencia Yofre — Repositorios</title>
+<meta name="description" content="Vitrina de repositorios de Florencia Yofre en GitHub">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- ============================================================
-     HEADER / NAV — barra fija superior con menú de anclas.
-     El menú móvil (hamburguesa) se controla desde script.js.
-============================================================ -->
-<header class="site-header" id="site-header">
-  <div class="wrap header-inner">
-    <a href="#hero" class="logo mono">MFY</a>
-
-    <nav class="nav" id="nav">
-      <a href="#sobre-mi" class="nav-link">Sobre mí</a>
-      <a href="#experiencia" class="nav-link">Experiencia</a>
-      <a href="#proyectos" class="nav-link">Proyectos</a>
-      <a href="#formacion" class="nav-link">Formación</a>
-      <a href="#contacto" class="nav-link">Contacto</a>
-    </nav>
-
-    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <span class="mono logo">FY // REPOS</span>
+      <span class="mono sub">auto-actualizado desde GitHub API</span>
+    </div>
+    <div class="top-actions">
+      <input id="search" class="input" placeholder="Buscar repo..." />
+      <select id="langFilter" class="input"><option value="">Todos los lenguajes</option></select>
+      <select id="sortBy" class="input"><option value="updated">Más recientes</option><option value="stars">Más estrellas</option><option value="name">A-Z</option></select>
+    </div>
   </div>
 </header>
 
-<main>
-
-  <!-- ==========================================================
-       HERO — portada. Nombre como foco visual principal (h1),
-       positioning profesional como subtítulo de menor jerarquía.
-  =========================================================== -->
-  <section class="hero" id="hero">
-    <div class="wrap">
-      <!-- Nombre: foco visual principal del hero -->
-      <h1 class="hero-name">María Florencia Yofre</h1>
-
-      <!-- Positioning profesional: mismo texto que antes, jerarquía visual reducida -->
-      <p class="hero-subtitle">
-        <span class="hero-role">Data &amp; Operations Analyst</span>
-        <span class="accent"> · </span><br>
-        <span class="hero-focus">Business Intelligence, Automatización y Mejora de Procesos</span>
-      </p>
-      <p class="lede">Profesional de datos con experiencia en análisis, operaciones y mejora continua de procesos, combinando Business Intelligence y automatización para optimizar la toma de decisiones.</p>
-
-      <p class="hero-current">
-        <span class="dot teal"></span>
-        Actualmente: <strong>Data Operations Analyst / Student Success Analyst</strong> en Henry
-      </p>
-
-      <div class="status-strip">
-        <span class="status-chip">SQL</span>
-        <span class="status-chip">Power BI</span>
-        <span class="status-chip">Airtable</span>
-        <span class="status-chip">Automatización de procesos</span>
-      </div>
-      <p class="hero-complementary mono">+ Salesforce &amp; Apex — conocimiento complementario</p>
-
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#experiencia">Ver experiencia →</a>
-        <a class="btn btn-secondary" href="#proyectos">Ver proyectos</a>
-      </div>
-    </div>
+<main class="wrap">
+  <section id="profile" class="profile">
+    <!-- se rellena con JS -->
+    <div class="skeleton">Cargando perfil...</div>
   </section>
 
-  <!-- ==========================================================
-       SOBRE MÍ — narrativa en 4 bloques con orden de prioridad:
-       1) formación inicial, 2) experiencia actual,
-       3) formación complementaria, 4) dirección futura.
-  =========================================================== -->
-  <section class="wrap" id="sobre-mi">
-    <div class="section-head">
-      <h2>Sobre mí</h2>
-      <span class="index mono">01</span>
-    </div>
-
-    <div class="about-row">
-      <div class="label">Mi camino</div>
-      <p>Empecé mi formación en Data Analytics en el bootcamp de <strong>Henry</strong>, donde desarrollé bases sólidas en SQL, Python y Power BI a través de proyectos académicos centrados en limpieza de datos, modelado y creación de dashboards. Ese recorrido incluyó proyectos individuales y en equipo, entre ellos el <strong>proyecto final integrador</strong> de la formación, desarrollado junto a un equipo multidisciplinario.</p>
-    </div>
-    <div class="about-row">
-      <div class="label">Experiencia actual</div>
-      <p>Hoy trabajo en Henry como <strong>Data Operations Analyst / Student Success Analyst</strong>, donde analizo datos operativos y coordino cohortes y equipos, con foco en la automatización de procesos con Airtable y la mejora continua de flujos de trabajo. Antes, me desempeñé como Tutor Program Coordinator &amp; Data Analytics Teaching Assistant. En paralelo, colaboro como voluntaria en <strong>DataRockers</strong> y participé como mentora adjunta de Salesforce en <strong>Bridge2Tech Academy</strong>.</p>
-    </div>
-    <div class="about-row">
-      <div class="label">Formación tecnológica complementaria</div>
-      <p>Sigo formándome en automatización de procesos —con foco en <strong>n8n</strong>— y en fundamentos de cloud con <strong>AWS Cloud Practitioner</strong>. En paralelo, complemento mi perfil técnico con conocimientos en <strong>Salesforce</strong> (Administrator &amp; Developer), profundizados con desarrollo en Apex a través de Trailhead, donde resolví el Superbadge Apex Specialist.</p>
-    </div>
-    <div class="about-row">
-      <div class="label">Hacia dónde voy</div>
-      <p>Mi objetivo es evolucionar hacia el desarrollo de soluciones inteligentes que combinen análisis de datos, automatización de procesos e <strong>inteligencia artificial aplicada</strong>, sumando en el futuro una mirada en <strong>seguridad informática</strong> orientada a datos y operaciones, para mejorar la eficiencia operativa y la toma de decisiones.</p>
-    </div>
+  <section class="controls">
+    <label class="check"><input type="checkbox" id="hideForks" checked> Ocultar forks</label>
+    <label class="check"><input type="checkbox" id="hideArchived" checked> Ocultar archivados</label>
+    <span id="counter" class="mono counter"></span>
   </section>
 
-  <!-- ==========================================================
-       EXPERIENCIA PROFESIONAL — timeline vertical.
-       Orden: más reciente primero. El item con clase "current"
-       muestra el nodo relleno y el badge "Actual".
-       Para sumar una experiencia nueva: agregar un bloque .tl-item
-       siguiendo la misma estructura, arriba de todo si es la más reciente.
-  =========================================================== -->
-  <section class="wrap" id="experiencia">
-    <div class="section-head">
-      <h2>Experiencia profesional</h2>
-      <span class="index mono">02</span>
-    </div>
+  <section id="grid" class="grid"></section>
 
-    <div class="timeline">
-      <!-- Rol actual -->
-      <div class="tl-item current">
-        <div class="tl-node"></div>
-        <div class="tl-org">
-          <h3>Henry</h3>
-          <span class="tl-status">Actual</span>
-        </div>
-        <div class="tl-dates mono">Abril 2025 — Actualidad</div>
-        <div class="tl-role">Data Operations Analyst / Student Success Analyst</div>
-        <ul class="tl-bullets">
-          <li>Análisis de datos operativos para el seguimiento de cohortes y equipos</li>
-          <li>Automatización de procesos con Airtable</li>
-          <li>Administración de cohortes y coordinación de correctores</li>
-          <li>Seguimiento de indicadores académicos y soporte a estudiantes vía Slack</li>
-          <li>Optimización de flujos de trabajo y mejora continua de procesos</li>
-        </ul>
-      </div>
-
-      <!-- Rol anterior en Henry -->
-      <div class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-org"><h3>Henry</h3></div>
-        <div class="tl-dates mono">Mayo 2024 — Junio 2025</div>
-        <div class="tl-role">Tutor Program Coordinator &amp; Data Analytics Teaching Assistant</div>
-        <ul class="tl-bullets">
-          <li>Coordinación y capacitación de tutores y asistentes académicos</li>
-          <li>Acompañamiento en análisis de datos (SQL, Python, visualización)</li>
-          <li>Monitoreo de indicadores operativos y experiencia del estudiante</li>
-        </ul>
-      </div>
-
-      <!-- Voluntariado en DataRockers -->
-      <div class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-org"><h3>DataRockers</h3></div>
-        <div class="tl-dates mono">Abril 2023 — Julio 2025 · Voluntariado</div>
-        <div class="tl-role">Data Analyst</div>
-        <ul class="tl-bullets">
-          <li>Desarrollo de dashboards en Power BI para proyectos de impacto social</li>
-          <li>Análisis de datos con Python y SQL para comunicar insights clave</li>
-        </ul>
-      </div>
-
-      <!-- Mentoría en Bridge2Tech Academy -->
-      <div class="tl-item">
-        <div class="tl-node"></div>
-        <div class="tl-org"><h3>Bridge2Tech Academy</h3></div>
-        <div class="tl-dates mono">Enero 2025 — Julio 2025</div>
-        <div class="tl-role">Mentora adjunta Salesforce (Admin &amp; Developer)</div>
-        <ul class="tl-bullets">
-          <li>Mentoría técnica en Salesforce y automatización de procesos CRM</li>
-        </ul>
-      </div>
-    </div>
+  <section id="empty" class="empty hidden">
+    <p>No se encontraron repos con esos filtros.</p>
   </section>
-
-  <!-- ==========================================================
-       PROYECTOS — dos subgrupos: Destacados (vidriera curada,
-       cross-categoría) y Proyectos académicos de Data Analytics.
-       Para sumar un proyecto nuevo: copiar un bloque <article class="card">
-       completo y ajustar tag/título/descripción/stack/link.
-  =========================================================== -->
-  <section class="wrap" id="proyectos">
-    <div class="section-head">
-      <h2>Proyectos</h2>
-      <span class="index mono">03</span>
-    </div>
-
-    <!-- Vidriera curada: 1 proyecto por categoría (académico, técnico, BI) -->
-    <div class="subsection">
-      <div class="subsection-title">Destacados</div>
-      <div class="card-grid">
-
-        <article class="card featured">
-          <div class="card-thumb">
-            <img src="https://raw.githubusercontent.com/Floryofre/SmartPro_Analytics/main/imagenes/Logo_PF.jpg" alt="Logo del proyecto SmartPro Analytics" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-tag tag-flagship">Proyecto académico · Final integrador</span>
-            <h3>SmartPro Analytics — Rendimiento NBA</h3>
-            <p>Una agencia de representación deportiva necesitaba evaluar objetivamente el rendimiento de jugadores y equipos de la NBA para mejorar sus decisiones de contratación. Analizamos datos públicos de rendimiento, salarios y lesiones, y desarrollamos un dashboard en Power BI con métricas de rendimiento e indicadores de relación salario/rendimiento. Proyecto final del bootcamp, desarrollado en equipo multidisciplinario.</p>
-            <div class="stack-row">
-              <span class="stack-chip">Python</span><span class="stack-chip">SQL</span><span class="stack-chip">Power BI</span><span class="stack-chip">GitHub</span>
-            </div>
-            <a class="card-link" href="https://github.com/Floryofre/SmartPro_Analytics" target="_blank" rel="noopener">Ver repositorio →</a>
-          </div>
-        </article>
-
-        <article class="card featured">
-          <div class="card-thumb"><span class="placeholder-note">Captura / badge pendiente</span></div>
-          <div class="card-body">
-            <span class="card-tag tag-technical">Proyecto técnico</span>
-            <h3>Salesforce Apex Specialist</h3>
-            <p>Resolución del Superbadge Apex Specialist de Trailhead, que plantea escenarios de negocio para automatizar procesos dentro de Salesforce: clases Apex, triggers, SOQL, DML, pruebas unitarias y optimización según los límites de gobernanza de la plataforma.</p>
-            <div class="stack-row">
-              <span class="stack-chip">Salesforce</span><span class="stack-chip">Apex</span><span class="stack-chip">SOQL</span><span class="stack-chip">DML</span><span class="stack-chip">Testing</span>
-            </div>
-            <a class="card-link" href="#">[ link al badge / repositorio — pendiente ]</a>
-          </div>
-        </article>
-
-        <article class="card featured">
-          <div class="card-thumb">
-            <img src="https://raw.githubusercontent.com/Floryofre/Power_BI_Henry/main/Captura%20de%20pantalla%20(947).png" alt="Captura del dashboard de Adventure Works Cycles en Power BI" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-tag tag-academic">Proyecto académico</span>
-            <h3>Adventure Works Cycles</h3>
-            <p>Adventure Works Cycles necesitaba consolidar sus datos de ventas e inventario para agilizar la toma de decisiones. Se modelaron los datos en Power BI, se crearon medidas DAX y se diseñó un dashboard de 6 páginas con métricas de ingresos, utilidad y ventas por categoría, identificando a Road Bikes como la subcategoría más vendida.</p>
-            <div class="stack-row">
-              <span class="stack-chip">Power BI</span><span class="stack-chip">Power Query</span><span class="stack-chip">DAX</span>
-            </div>
-            <a class="card-link" href="https://github.com/Floryofre/Power_BI_Henry" target="_blank" rel="noopener">Ver repositorio →</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-
-    <!-- Resto de los proyectos académicos del bootcamp (etapa formativa) -->
-    <div class="subsection">
-      <div class="subsection-title">Proyectos académicos — Data Analytics</div>
-      <p class="subsection-note">Etapa formativa dentro del bootcamp de Data Analytics.</p>
-      <div class="card-grid">
-
-        <article class="card">
-          <div class="card-thumb"><span class="placeholder-note">Captura pendiente</span></div>
-          <div class="card-body">
-            <span class="card-tag tag-academic">Proyecto académico</span>
-            <h3>Biogenesys — Expansión LatAm</h3>
-            <p>Análisis estadístico y EDA para priorizar regiones de expansión y la respuesta sanitaria al COVID-19 en 6 países de Latinoamérica, identificando a Brasil, México y Argentina como las ubicaciones más adecuadas.</p>
-            <div class="stack-row">
-              <span class="stack-chip">Python</span><span class="stack-chip">Matplotlib</span><span class="stack-chip">Seaborn</span><span class="stack-chip">Power BI</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-thumb"><span class="placeholder-note">Captura pendiente</span></div>
-          <div class="card-body">
-            <span class="card-tag tag-academic">Proyecto académico</span>
-            <h3>Fast Food Delivery — Base de datos</h3>
-            <p>La empresa necesitaba una base de datos escalable para sostener su crecimiento. Se diseñó el modelo relacional, se identificaron y corrigieron inconsistencias en los datos, y se optimizaron las consultas SQL para responder preguntas de negocio clave.</p>
-            <div class="stack-row">
-              <span class="stack-chip">SQL Server</span><span class="stack-chip">SQL</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-thumb"><span class="placeholder-note">Captura pendiente</span></div>
-          <div class="card-body">
-            <span class="card-tag tag-academic">Proyecto académico · Fundacional</span>
-            <h3>Global Super Store — Google Sheets</h3>
-            <p>Primer proyecto de la formación. Limpieza de datos, tablas dinámicas y dashboard interactivo en Sheets.</p>
-            <div class="stack-row">
-              <span class="stack-chip">Google Sheets</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================
-       CERTIFICACIONES Y FORMACIÓN — 4 columnas que diferencian
-       con precisión el estado real de cada ítem: formación interna
-       completada, badge de Trailhead, en curso, y formación adicional.
-       Ninguna se presenta como certificación oficial externa
-       salvo que exista una credencial verificable (ver disclaimer debajo).
-  =========================================================== -->
-  <section class="wrap" id="formacion">
-    <div class="section-head">
-      <h2>Certificaciones y formación</h2>
-      <span class="index mono">04</span>
-    </div>
-
-    <div class="formation-grid formation-grid-4">
-      <div class="formation-col">
-        <h4><span class="dot" style="background:var(--teal)"></span>Formación completada</h4>
-        <ul>
-          <li>Data Analytics Bootcamp — Henry</li>
-          <li>Salesforce Administrator &amp; Developer — Henry</li>
-        </ul>
-      </div>
-      <div class="formation-col">
-        <h4><span class="dot" style="background:var(--teal)"></span>Badge Trailhead</h4>
-        <ul>
-          <li>Apex Specialist — Superbadge resuelto</li>
-        </ul>
-      </div>
-      <div class="formation-col">
-        <h4><span class="dot" style="background:var(--amber)"></span>En curso</h4>
-        <ul>
-          <li>Salesforce Trailhead (camino general)</li>
-          <li>Automatización de procesos con n8n</li>
-        </ul>
-      </div>
-      <div class="formation-col">
-        <h4><span class="dot" style="background:var(--muted-2)"></span>Formación adicional</h4>
-        <ul>
-          <li>AWS Cloud Practitioner — curso completado, certificación en trámite</li>
-        </ul>
-      </div>
-    </div>
-    <p class="formation-disclaimer mono">Ninguno de estos ítems corresponde a una certificación oficial externa verificable con credencial; se muestran como formación completada o badges obtenidos.</p>
-  </section>
-
-  <!-- ==========================================================
-       STACK — agrupado por prioridad de posicionamiento:
-       Data primero, Automation/Operations segundo, Salesforce
-       y afines como "Complementario", y Tools al final.
-       Solo se listan herramientas respaldadas por proyectos/experiencia.
-  =========================================================== -->
-  <section class="wrap" id="skills">
-    <div class="section-head">
-      <h2>Stack</h2>
-      <span class="index mono">05</span>
-    </div>
-
-    <div class="stack-block">
-      <div class="stack-label mono">Data</div>
-      <div class="stack-cloud">
-        <span class="stack-pill">SQL</span>
-        <span class="stack-pill">Python</span>
-        <span class="stack-pill">Power BI</span>
-        <span class="stack-pill">Pandas</span>
-        <span class="stack-pill">DAX</span>
-        <span class="stack-pill">SQL Server</span>
-        <span class="stack-pill">MySQL</span>
-        <span class="stack-pill">NumPy</span>
-        <span class="stack-pill">Matplotlib</span>
-        <span class="stack-pill">Seaborn</span>
-      </div>
-    </div>
-
-    <div class="stack-block">
-      <div class="stack-label mono">Automation / Operations</div>
-      <div class="stack-cloud">
-        <span class="stack-pill">Airtable</span>
-        <span class="stack-pill">Automatización de procesos</span>
-        <span class="stack-pill muted">n8n <span class="pill-note">· en formación</span></span>
-      </div>
-    </div>
-
-    <div class="stack-block">
-      <div class="stack-label mono">Complementario</div>
-      <div class="stack-cloud">
-        <span class="stack-pill">Salesforce</span>
-        <span class="stack-pill">Apex</span>
-        <span class="stack-pill">SOQL</span>
-      </div>
-    </div>
-
-    <div class="stack-block">
-      <div class="stack-label mono">Tools</div>
-      <div class="stack-cloud">
-        <span class="stack-pill">GitHub</span>
-        <span class="stack-pill">Excel</span>
-        <span class="stack-pill">Google Sheets</span>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<!-- ============================================================
-     CONTACTO — tarjeta introductoria + formulario (Formspree) +
-     datos de contacto directos. El detalle del endpoint y las
-     alternativas de servicio están comentados justo antes del <form>.
-============================================================ -->
-<footer class="wrap" id="contacto">
-  <div class="section-head">
-    <h2>Contacto</h2>
-    <span class="index mono">06</span>
-  </div>
-
-  <div class="contact-intro-card">
-    <h3>¿Trabajamos juntos?</h3>
-    <p>Me interesa participar en proyectos relacionados con análisis de datos, Business Intelligence, operaciones, automatización de procesos e inteligencia artificial aplicada. Si creés que mi perfil puede aportar valor a tu equipo, o simplemente querés conversar sobre una oportunidad, estaré encantada de conectar.</p>
-  </div>
-
-  <!--
-    ================================================================
-    FORMULARIO DE CONTACTO — conectado a Formspree
-    ================================================================
-    Endpoint activo: https://formspree.io/f/mbdnnaby
-    El envío se maneja en script.js (fetch POST con Accept: application/json).
-    Si en algún momento se necesita cambiar de servicio:
-
-    - Netlify Forms: agregar al <form> los atributos
-      data-netlify="true" y name="contacto", y sumar un input oculto
-      <input type="hidden" name="form-name" value="contacto">.
-      En ese caso el "action" de abajo deja de usarse.
-    - EmailJS: requiere sumar su SDK vía CDN e inicializarlo en script.js
-      con Service ID / Template ID / Public Key. El envío se maneja
-      entero en JS y el "action" de este form tampoco se usa.
-    ================================================================
-  -->
-  <form class="contact-form" id="contact-form" action="https://formspree.io/f/mbdnnaby" method="POST" novalidate>
-    <div class="form-row">
-      <label for="cf-name">Nombre <span class="required" aria-hidden="true">*</span></label>
-      <input type="text" id="cf-name" name="name" required aria-required="true" autocomplete="name">
-    </div>
-
-    <div class="form-row">
-      <label for="cf-company">Empresa <span class="optional">(opcional)</span></label>
-      <input type="text" id="cf-company" name="company" autocomplete="organization">
-    </div>
-
-    <div class="form-row">
-      <label for="cf-email">Email <span class="required" aria-hidden="true">*</span></label>
-      <input type="email" id="cf-email" name="email" required aria-required="true" autocomplete="email">
-    </div>
-
-    <div class="form-row">
-      <label for="cf-subject">Asunto <span class="required" aria-hidden="true">*</span></label>
-      <input type="text" id="cf-subject" name="subject" required aria-required="true">
-    </div>
-
-    <div class="form-row form-row-full">
-      <label for="cf-message">Mensaje <span class="required" aria-hidden="true">*</span></label>
-      <textarea id="cf-message" name="message" rows="5" required aria-required="true"></textarea>
-    </div>
-
-    <div class="form-actions">
-      <button type="submit" class="btn btn-primary" id="cf-submit">
-        <span class="btn-label">Enviar mensaje</span>
-      </button>
-      <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
-    </div>
-  </form>
-
-  <div class="contact-links-block">
-    <a class="contact-link-item" href="https://www.linkedin.com/in/maflorenciayofre" target="_blank" rel="noopener" aria-label="LinkedIn de María Florencia Yofre">
-      <span class="contact-icon-badge mono" aria-hidden="true">in</span>
-      <span>LinkedIn</span>
-    </a>
-    <a class="contact-link-item" href="https://github.com/Floryofre" target="_blank" rel="noopener" aria-label="GitHub de María Florencia Yofre">
-      <span class="contact-icon-badge mono" aria-hidden="true">gh</span>
-      <span>GitHub</span>
-    </a>
-    <a class="contact-link-item" href="mailto:floryofre.da@gmail.com" aria-label="Enviar email a María Florencia Yofre">
-      <span class="contact-icon-badge mono" aria-hidden="true">@</span>
-      <span>floryofre.da@gmail.com</span>
-    </a>
-  </div>
-
-  <p class="foot-note mono">© <span id="year"></span> María Florencia Yofre</p>
+<footer class="wrap foot mono">
+  <span>Hecho con GitHub API — se actualiza sola cada vez que creas o editas un repo</span>
+  <span>© <span id="year"></span> Florencia Yofre</span>
 </footer>
 
 <script src="script.js"></script>
